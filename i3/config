@@ -41,16 +41,16 @@ set $right l
 # -------------------------------------------------------------------------------------------------
 # Screen settings variables
 # -------------------------------------------------------------------------------------------------
-# Depending on what machine we are
+# Uncomment lines depending on what machine we are
 
 # --------------
 # GameBox setup
 # --------------
 # Set the primary screen $pScreen to HDMI-0
-set $pScreen HDMI-0
+# set $pScreen HDMI-0
 
 # Set the $leftScreen to DVI-I-0
-set $leftScreen DVI-I-0
+# set $leftScreen DVI-I-0
 
 # --------------
 # DevBox Setup
@@ -83,7 +83,7 @@ set $four "4:/"
 set $five "5: Mail"
 set $six "6: Music"
 set $seven "7: Monit"
-set $height "8:Tchat"
+set $eight "8:Tchat"
 set $nine "9:+"
 set $ten "10:+"
 set $eleven "11:+"
@@ -157,13 +157,14 @@ bindsym $mod+$shift+Right move right
 # -------------------------------------------------------------------------------------------------
 # WORKSPACES ON SPECIFIC SCREEN
 # -------------------------------------------------------------------------------------------------
-workspace $one output $pScreen
-workspace $two output $leftScreen
-workspace $three output $rightScreen
-workspace $four output $pScreen
-workspace $five output $rightScreen
-workspace $six output $pScreen
-workspace $seven output $leftScreen
+# Uncomment lines depending on what machine we are
+# workspace $one output $pScreen
+# workspace $two output $leftScreen
+# workspace $three output $rightScreen
+# workspace $four output $pScreen
+# workspace $five output $rightScreen
+# workspace $six output $pScreen
+# workspace $seven output $leftScreen
 
 # -------------------------------------------------------------------------------------------------
 # TARGET WINDOW ON SPECIFIC WORKSPACE
@@ -231,6 +232,7 @@ focus_on_window_activation none
 # -------------------------------------------------------------------------------------------------
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="Organizer"] floating enable
 for_window [window_role="setup"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -257,7 +259,7 @@ for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable
 for_window [class="Timeset-gui"] floating enable
-for_window [class="(?i)virtualbox"] floating enable
+for_window [class="Places"] floating enable
 for_window [class="^Default - Wine desktop"] floating enable
 for_window [class="Yad"] floating enable
 
@@ -308,13 +310,13 @@ bindsym $mod+Escape mode "$systemMode"
 # -------------------------------------------------------------------------------------------------
 set $resizeMode Resize mode press: (h) - width, (j) - height, (k) + height, (l) + width
 mode "$resizeMode" {
-    # Vim mode
+  # Vim mode
   bindsym $left resize shrink width 10 px or 10 ppt
   bindsym $up resize grow height 10 px or 10 ppt
   bindsym $down resize shrink height 10 px or 10 ppt
   bindsym $right resize grow width 10 px or 10 ppt
 
-    # Alternative mode
+  # Alternative mode
   bindsym Left resize shrink width 10 px or 10 ppt
   bindsym Down resize grow height 10 px or 10 ppt
   bindsym Up resize shrink height 10 px or 10 ppt
@@ -386,30 +388,24 @@ bindsym $mod+Return exec --no-startup-id termite
 bindsym $mod+KP_Enter exec --no-startup-id pcmanfm
 bindsym $mod+$shift+p exec --no-startup-id pamac-manager
 
-# Make a screenshot (F15)
-# bindsym 193 exec --no-startup-id scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir IMAGES)'
-
 # -------------------------------------------------------------------------------------------------
 # I3 STATUS BAR
 # -------------------------------------------------------------------------------------------------
 bar {
-  # height 25
-  # workspace_buttons yes
-  # position top
-  # status_command i3status -c ~/.config/i3/i3status.conf
+  position top
+  status_command i3status -c ~/.config/i3/i3status.conf
+  font pango:Noto Mono Regular 11
 
-  id bar-1
-		output $pScreen
-    font pango:Noto Mono Regular 11
-		tray_output $pScreen
-		status_command i3status -c ~/.config/i3/i3status.conf
-		position top
+  # Uncomment lines depending on what machine we are
+  # id bar-1
+  #   output $pScreen
+  #   tray_output $pScreen
 
-	id bar-2
-		output $leftScreen
+  # id bar-2
+  #   output $leftScreen
 
-	id bar-3
-		output $rightScreen
+  # id bar-3
+  #   output $rightScreen
 
   colors {
     background $black
